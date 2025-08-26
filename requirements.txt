@@ -1,0 +1,10 @@
+psutil
+configparser
+lxml
+python-dateutil
+yagmail
+jinja2
+tkinterweb
+ttkthemes
+pyinstaller
+colorama
