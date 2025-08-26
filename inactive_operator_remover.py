@@ -34,7 +34,7 @@ def get_config_path() -> Path:
     candidates = [
         app_dir() / "config.ini",
         Path.cwd() / "config.ini",  # if you run from a shell
-        Path(r"\\v-arisfleet\arisdata\InactiveOperatorRemover\config.ini"),  # fallback
+        Path(r"*******local address taken out********\config.ini"),  # fallback
     ]
     for p in candidates:
         if p.exists():
@@ -294,7 +294,7 @@ def main():
     subject_status = "ISSUE"
 
     # === Step 1: copy & name input ===
-    src_csv = Path(r"\\v-arisfleet\arisdata\DriverLicenceReports\assets") / "InactiveOperators.csv"
+    src_csv = Path(r"**************local address taken out**************") / "InactiveOperators.csv"
     dst_csv = input_dir / f"InactiveOperators_{stamp}.csv"
     input_dir.mkdir(parents=True, exist_ok=True)
 
@@ -493,3 +493,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
