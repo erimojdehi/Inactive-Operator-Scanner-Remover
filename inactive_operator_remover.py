@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import configparser
 import csv
 import datetime as dt
@@ -493,4 +490,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
