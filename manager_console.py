@@ -40,10 +40,10 @@ def FOLDERS(base):
 def load_config():
     cfg = configparser.ConfigParser()
     if not os.path.exists(CONFIG_PATH):
-        cfg["EMAIL"] = {"from_address": "no-reply@northbay.ca", "recipients": ""}
-        cfg["PATHS"] = {"base_dir": r"\\v-arisfleet\arisdata\InactiveOperatorRemover"}
-        cfg["SERVER"] = {"host": "v-fleetfocustest", "port": "2000"}
-        cfg["UPLOAD"] = {"fadataloader_user": "SYSADMIN-ARIS", "fadataloader_pass": ""}
+        cfg["EMAIL"] = {"from_address": "************", "recipients": ""}
+        cfg["PATHS"] = {"base_dir": r"**********local adsress*********"}
+        cfg["SERVER"] = {"host": "*************", "port": "2000"}
+        cfg["UPLOAD"] = {"fadataloader_user": "******************", "fadataloader_pass": ""}
         cfg["RETENTION"] = {"days": "30"}
         with open(CONFIG_PATH, "w", encoding="utf-8") as f:
             cfg.write(f)
@@ -54,7 +54,7 @@ def load_config():
             if not cfg.has_section("UPLOAD"):
                 cfg.add_section("UPLOAD")
             if not cfg.has_option("UPLOAD", "fadataloader_user"):
-                cfg.set("UPLOAD", "fadataloader_user", cfg.get("DATALOADER", "user", fallback="SYSADMIN-ARIS"))
+                cfg.set("UPLOAD", "fadataloader_user", cfg.get("DATALOADER", "user", fallback="*************"))
             if not cfg.has_option("UPLOAD", "fadataloader_pass"):
                 # accept both password / pass
                 pw = cfg.get("DATALOADER", "password", fallback=cfg.get("DATALOADER", "pass", fallback=""))
@@ -235,18 +235,18 @@ class ManagerConsole(ttk.Frame):
     def _build_vars(self):
         v = {
             # EMAIL
-            "from_address": tk.StringVar(value=self.cfg.get("EMAIL", "from_address", fallback="no-reply@northbay.ca")),
+            "from_address": tk.StringVar(value=self.cfg.get("EMAIL", "from_address", fallback="************")),
             "recipients": tk.StringVar(value=self.cfg.get("EMAIL", "recipients", fallback="")),
 
             # PATHS
-            "base_dir": tk.StringVar(value=self.cfg.get("PATHS", "base_dir", fallback=r"\\\\v-arisfleet\\arisdata\\InactiveOperatorRemover")),
+            "base_dir": tk.StringVar(value=self.cfg.get("PATHS", "base_dir", fallback=r"************local address************")),
 
             # SERVER (host/port used by FA Data Loader)
-            "host": tk.StringVar(value=self.cfg.get("SERVER", "host", fallback="v-fleetfocustest")),
+            "host": tk.StringVar(value=self.cfg.get("SERVER", "host", fallback="***********")),
             "port": tk.StringVar(value=self.cfg.get("SERVER", "port", fallback="2000")),
 
             # UPLOAD (credentials) — EXACT KEYS from your working console
-            "fa_user": tk.StringVar(value=self.cfg.get("UPLOAD", "fadataloader_user", fallback="SYSADMIN-ARIS")),
+            "fa_user": tk.StringVar(value=self.cfg.get("UPLOAD", "fadataloader_user", fallback="***************")),
             "fa_pass": tk.StringVar(  # will show masked; retained from config
                 value=self.cfg.get("UPLOAD", "fadataloader_pass",
                         fallback=self._fallback_dl_password())  # if someone previously saved under DATALOADER.*
@@ -445,3 +445,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
