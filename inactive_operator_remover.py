@@ -34,7 +34,7 @@ def get_config_path() -> Path:
     candidates = [
         app_dir() / "config.ini",
         Path.cwd() / "config.ini",  # if you run from a shell
-        Path(r"\\v-arisfleet\arisdata\InactiveOperatorRemover\config.ini"),  # fallback
+        Path(r"***************local address****************"),  # fallback
     ]
     for p in candidates:
         if p.exists():
@@ -90,7 +90,7 @@ def send_email_html(from_addr: str, to_addrs: List[str], subject: str, html: str
         msg["To"] = ", ".join(to_addrs)
         msg["Subject"] = subject
         msg.attach(MIMEText(html, "html"))
-        with smtplib.SMTP("smtp.northbay.ca", 25, timeout=30) as s:
+        with smtplib.SMTP("***********", 25, timeout=30) as s:
             s.starttls()
             s.send_message(msg)
         return True, None
@@ -294,7 +294,7 @@ def main():
     subject_status = "ISSUE"
 
     # === Step 1: copy & name input ===
-    src_csv = Path(r"\\v-arisfleet\arisdata\DriverLicenceReports\assets") / "InactiveOperators.csv"
+    src_csv = Path(r"***************local address****************") / "InactiveOperators.csv"
     dst_csv = input_dir / f"InactiveOperators_{stamp}.csv"
     input_dir.mkdir(parents=True, exist_ok=True)
 
@@ -493,3 +493,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
